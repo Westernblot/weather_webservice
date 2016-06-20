@@ -1,0 +1,47 @@
+借助jdk 工具生成 client 代码
+
+   wsimport -keep url
+
+
+
+--------------------------------错误解析------------------------------------
+
+[WARNING] src-resolve.4.2: 解析组件 's:schema' 时出错。在该
+a' 位于名称空间 'http://www.w3.org/2001/XMLSchema' 中, 但无
+ws.webxml.com.cn/WebServices/WeatherWS.asmx?wsdl#types?sche
+组件。如果这是不正确的名称空间, 则很可能需要更改 's:schema'
+的名称空间, 则应将适当的 'import' 标记添加到 'http://ws.web
+s/WeatherWS.asmx?wsdl#types?schema1'。
+  line 15 of http://ws.webxml.com.cn/WebServices/WeatherWS.
+a1
+
+[WARNING] src-resolve: 无法将名称 's:schema' 解析为 'elemen
+
+  line 15 of http://ws.webxml.com.cn/WebServices/WeatherWS.
+a1
+
+[ERROR] undefined element declaration 's:schema'
+  line 15 of http://ws.webxml.com.cn/WebServices/WeatherWS.
+
+[ERROR] undefined element declaration 's:schema'
+  line 61 of http://ws.webxml.com.cn/WebServices/WeatherWS.
+
+[ERROR] undefined element declaration 's:schema'
+  line 101 of http://ws.webxml.com.cn/WebServices/WeatherWS
+
+
+E:\workspace\weather_ws_client\src>cd E:\workspace\day01_ws
+
+E:\workspace\day01_ws_client\src>wsimport -keep E:\workspac
+\helloWs.wsdl
+
+--------------------------------解决方案--------------------------------------
+
+将http://ws.webxml.com.cn/WebServices/WeatherWS.asmx?wsdl 拷贝到本地 weather.wsdl
+
+
+将 <s:element ref="s:schema"/>
+   <s:any/>
+
+替换成  <s:any minOccurs="2" maxOccurs="2"/>
+
